@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Apps\CategoryController;
 use App\Http\Controllers\Apps\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,7 @@ Route::prefix('apps')->group(function () {
     Route::group(['middleware' => ['auth']], function () {
 
         //route dashboard
-        Route::get('dashboard', App\Http\Controllers\Apps\DashboardController::class)->name('apps.dashboard');
+        Route::get('dashboard', DashboardController::class)->name('apps.dashboard');
+        Route::resource('categories', CategoryController::class);
     });
 });
